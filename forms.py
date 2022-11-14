@@ -87,6 +87,81 @@ class ConfirmationForm(FlaskForm):
     startdate = DateField('Start Date', format='%Y-%m-%d')
     enddate = DateField('End Date', format='%Y-%m-%d')
 
+
+    #Project Details
+    capability1=StringField ("OCA capability 1", validators=[DataRequired()])
+    capability2= StringField ("OCA capability 2", validators=[DataRequired()])
+
+
+    #Practicum details
+    primary_support= SelectField ("Primary support the analyst will be providing", validators=[DataRequired()], choices=[
+            ('O', 'O'),
+             ('A', 'A'),
+             ('AP', 'AP'),
+        ])
+
+    secondary_support= SelectField ("Secondary support the analyst will be providing", validators=[DataRequired()], choices=[
+            ('O', 'O'),
+             ('A', 'A'),
+             ('AP', 'AP'),
+        ])
+
+    city=SelectField ("In which city will the analyst be based?", validators=[DataRequired()], choices=[
+            ('O', 'O'),
+             ('A', 'A'),
+             ('AP', 'AP'),
+        ])
+
+
+    project_summary= StringField ("Project summary (1-2 phrases)", validators=[DataRequired()])
+    #Key client contact
+    full_name= StringField ("Full Name", validators=[DataRequired()])
+    email=  StringField ("Email Address", validators=[DataRequired()])
+
+    loe_provided= SelectField ("Have you previously provided Budget LOE via the project code survey? [i.e., if part of a larger project]", validators=[DataRequired()], choices=[
+            ('Yes', 'Yes'),
+             ('Yes', 'Yes'),
+        ])
+
+    partner=  StringField ("Partner", validators=[DataRequired()])
+
+    associate_partner=  StringField ("Associate Partner", validators=[DataRequired()])
+
+    principal=  StringField ("Principal", validators=[DataRequired()])
+
+    spl=  StringField ("Senior PL / Senior TL", validators=[DataRequired()])
+
+    pl=  StringField ("Project Leader / Transaction leader", validators=[DataRequired()])
+
+    associate=  StringField ("(S) Associate", validators=[DataRequired()])
+
+    analyst=  StringField ("(S) Analyst", validators=[DataRequired()])
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
 

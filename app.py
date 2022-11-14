@@ -26,6 +26,10 @@ def survey():
 def tentative():
     return render_template('tentative.html',title="Tentative Projects")
 
+@app.route("/snapshot")
+def snapshot():
+    return render_template('tentative.html',title="Snapshot")
+
 
 if __name__=="__main__":
     app.run(debug=True)

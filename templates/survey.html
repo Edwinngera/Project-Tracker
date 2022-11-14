@@ -1,0 +1,383 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form_content">
+    <div class="row">
+        <div class="col">
+            <h1 class="centre"> Instructions</h1>
+            <ul>
+                <li> Select the Tentative Project you would like to confirm from the Project Name field</li>
+                <li> Confirm that the client name and project start date and end date are accurate </li>
+                <li> Fill in other project information accurately and click on the submit button at the end of this form
+                </li>
+            </ul>
+        </div>
+
+        <hr class="hr" />
+        <h1>Key</h1>
+        <table class="table table-striped" style="max-width: 25%; margin-left: 5px;">
+            <tr>
+                <th>O</th>
+                <td>OCA</td>
+            </tr>
+            <tr>
+                <th>A</th>
+                <td>Arcadia Placement</td>
+            </tr>
+            <tr>
+                <th>AP</th>
+                <td>Arcadia Practicum</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <hr class="hr" />
+
+    <div class="salesforce">
+        <b>
+            <p>Please select the salesforce opportunity associated with this project. If the project is associated with
+                an existing opportunity not on the list, please select "Subscode for a larger project". Else if you do
+                not know the opportunity then select "Other". The opportunity need to be under "Submitted proposal" or
+                "Closed Won" </p>
+        </b>
+    </div>
+    <hr class="hr" />
+    <form>
+        {{ form.hidden_tag() }}
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        {{ form.salesforce.label}}
+                        {{ form.salesforce(class_ = 'form-control' ) }}
+                        {% if form.salesforce.errors %}
+                        <ul class="errors">
+                            {% for error in form.salesforce.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.stage.label }}</b>
+                        {{ form.stage(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.stage.errors %}
+                        <ul class="errors">
+                            {% for error in form.stage.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="hr" />
+
+        <h3>Project Information</h3>
+
+        <hr class="hr" />
+
+        <div class="row mb-4">
+
+            <div class="col">
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.project_name.label }}</b>
+                        {{ form.project_name(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.project_name.errors %}
+                        <ul class="errors">
+                            {% for error in form.project_name.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.larger_project.label }}</b>
+                        {{ form.larger_project(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.larger_project.errors %}
+                        <ul class="errors">
+                            {% for error in form.larger_project.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.client_type.label }}</b>
+                        {{ form.client_type(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.client_type.errors %}
+                        <ul class="errors">
+                            {% for error in form.client_type.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.engagement_type.label }}</b>
+                        {{ form.engagement_type(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.engagement_type.errors %}
+                        <ul class="errors">
+                            {% for error in form.engagement_type.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.contract_entity.label }}</b>
+                        {{ form.contract_entity(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.contract_entity.errors %}
+                        <ul class="errors">
+                            {% for error in form.contract_entity.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+                <!-- 
+                Cap raise -->
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.cap_raise.label }}</b>
+                        {{ form.cap_raise(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.cap_raise.errors %}
+                        <ul class="errors">
+                            {% for error in form.cap_raise.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.country_of_operation1.label }}</b>
+                        {{ form.country_of_operation1(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.country_of_operation1.errors %}
+                        <ul class="errors">
+                            {% for error in form.country_of_operation1.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.country_of_operation2.label }}</b>
+                        {{ form.country_of_operation2(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.country_of_operation2.errors %}
+                        <ul class="errors">
+                            {% for error in form.country_of_operation2.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.rural.label }}</b>
+                        {{ form.rural(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.rural.errors %}
+                        <ul class="errors">
+                            {% for error in form.rural.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.rural.label }}</b>
+                        {{ form.rural(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.rural.errors %}
+                        <ul class="errors">
+                            {% for error in form.rural.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.industry.label }}</b>
+                        {{ form.industry(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.rural.errors %}
+                        <ul class="errors">
+                            {% for error in form.rural.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.sec_industry.label }}</b>
+                        {{ form.sec_industry(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.sec_industry.errors %}
+                        <ul class="errors">
+                            {% for error in form.sec_industry.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+
+
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.business_unit.label }}</b>
+                        {{ form.business_unit(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.business_unit.errors %}
+                        <ul class="errors">
+                            {% for error in form.business_unit.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="projects">
+                    <p><b>These are the current details from 10k ft.Please confirm if accurate *</b> </p>
+                    <hr class="hr" />
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Client Name [Org paying for the work]</th>
+                            <td>Carbon Trust</td>
+                        </tr>
+                        <tr>
+                            <th>Project Start Date</th>
+                            <td>2022-11-03</td>
+                        </tr>
+                        <tr>
+                            <th>Project End Date</th>
+                            <td>2022-12-30</td>
+                        </tr>
+                    </table>
+
+                    <hr class="hr" />
+                    <p><b>*If the information above is incorrect, please input the correct information below:</b></p>
+
+                    <hr class="hr" />
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.client_name.label }}</b>
+                            {{ form.client_name(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.client_name.errors %}
+                            <ul class="errors">
+                                {% for error in form.client_name.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+                    <div class="form-outline">
+                        <b>{{ form.startdate.label }}</b>
+                        {{ form.csrt_token }}
+                        {{form.startdate(class='datepicker')}} {{form.hidden_tag()}}
+                        {% if form.startdate.errors %}
+                        <ul class="errors">
+                            {% for error in form.startdate.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.enddate.label(style="margin-right:6px") }}</b>
+                            {{ form.csrt_token }}
+                            {{form.enddate(class='datepicker')}} {{form.hidden_tag()}}
+                            <p>
+                                {% if form.startdate.errors %}
+                            <ul class="errors">
+                                {% for error in form.startdate.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+    </form>
+
+</div>
+
+{% endblock %}

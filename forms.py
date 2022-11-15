@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField,Select
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 import datetime
+from models import Projects, Salesforce, Tentative_Projects
 
 
 
@@ -20,11 +21,8 @@ class ConfirmationForm(FlaskForm):
             ('Closed Won', 'Closed Won')
         ])
 
-
-    project_name =SelectField ("Project Name", validators=[DataRequired()], choices=[
-            ('MFA', 'MFA')
-        ])
-
+    # choices=[(option.project_name, option.project_name) for option in Projects.query.all()]
+    project_name =SelectField("Project Name", validators=[DataRequired()])
     larger_project=SelectField ("Is it part of a larger project?", validators=[DataRequired()], choices=[
             ('Yes', 'Yes')
         ])

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="projects">
+    <h2>Tentative Projects</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Project Code</th>
+                <th>Start Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i  in results %}
+            <tr>
+                <td style="max-width: 100px;">{{i.project_name}}</td>
+                <td>{{i.project_id}}</td>
+                <td>{{i.curr_end_date}}</td>
+            </tr>
+            {% endfor %}
+         
+        </tbody>
+    </table>
+</div>
+{% endblock %}

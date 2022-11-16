@@ -34,17 +34,26 @@ class Projects(db.Model):
 class Tentative_Projects(db.Model):
     __tablename__="Tentative_Projects"
     id=db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer,nullable=False, primary_key=True)
+    project_id = db.Column(db.String,nullable=False)
+    project_name=db.Column(db.String,nullable=False)
     project_start_date=db.Column(db.String, nullable=False)
     project_end_date=db.Column(db.String, nullable=False)
+    project_type=db.Column(db.String, nullable=False)
+    client=db.Column(db.String, nullable=False)
 
-    
+    def __repr__(self):
+        return f"<Tentative_Projects project_name={self.project_name} client={self.client} project_start_date={self.project_start_date} >"
+
+ 
 class Salesforce(db.Model):
     __tablename__="Salesforce"
     id=db.Column(db.Integer, primary_key=True)
     Opp_Name=db.Column(db.String,nullable=False)
     Salesforce_ID=db.Column(db.String,nullable=False)
-    Stage=db.Column(db.String,nullable=False)
+    Stage=db.Column(db.String,nullable=False) 
+
+    def __repr__(self):
+        return f"<Salesforce Opp_Name={self.Opp_Name} Salesforce_ID={self.Salesforce_ID}  stage={self.Stage}"
 
 
     

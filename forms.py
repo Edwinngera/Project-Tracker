@@ -8,14 +8,7 @@ from models import Projects, Salesforce, Tentative_Projects
 
 
 class ConfirmationForm(FlaskForm):
-    salesforce =SelectField ("Salesforce Opportunity", validators=[DataRequired()], choices=[
-            ('Ludique Works - Analyst support (TTA)', 'Ludique Works - Analyst support (TTA)'),
-            ('Corrupt Politician', 'politician'),
-            ('No-nonsense City Cop', 'cop'),
-            ('Professional Rocket League Player', 'rocket'),
-            ('Lonely Guy At A Diner', 'lonely'),
-            ('Pokemon Trainer', 'pokemon')
-        ])
+    salesforce =SelectField ("Salesforce Opportunity", validators=[DataRequired()])
     
     stage =SelectField ("Stage", validators=[DataRequired()], choices=[
             ('Closed Won', 'Closed Won')
@@ -24,20 +17,30 @@ class ConfirmationForm(FlaskForm):
     # choices=[(option.project_name, option.project_name) for option in Projects.query.all()]
     project_name =SelectField("Project Name", validators=[DataRequired()])
     larger_project=SelectField ("Is it part of a larger project?", validators=[DataRequired()], choices=[
-            ('Yes', 'Yes')
+            ('Yes', 'Yes'),
+            ('No', 'No')
         ])
 
     client_type=SelectField ("Client type", validators=[DataRequired()], choices=[
-            ('Yes', 'Yes')
+            ('SME', 'SME'),
+            ('NGO', 'NGO'),
+            ('Investor', 'Investor'),
+            ('Corporate', 'Corporate'),
+             ('Government', 'Government'),
         ])
 
 
     engagement_type=SelectField ("Engagement Type", validators=[DataRequired()], choices=[
-            ('Yes', 'Yes')
+            ('SME', 'SME'),
+            ('NGO', 'NGO'),
+            ('Investor', 'Investor'),
+            ('Corporate', 'Corporate'),
+             ('Government', 'Government'),
         ])
 
     contract_entity=SelectField ("OCA entity involved in signing the contract", validators=[DataRequired()], choices=[
-            ('Yes', 'Yes')
+            ('General Engagement', 'General Engagement'),
+            ('SME Engagement', 'SME Engagement'),
         ])
 
     cap_raise=SelectField ("Does it include a capital raise component", validators=[DataRequired()], choices=[
@@ -117,7 +120,7 @@ class ConfirmationForm(FlaskForm):
     email=  StringField ("Email Address", validators=[DataRequired()])
 
     loe_provided= SelectField ("Have you previously provided Budget LOE via the project code survey? [i.e., if part of a larger project]", validators=[DataRequired()], choices=[
-            ('Yes', 'Yes'),
+            ('No', 'No'),
              ('Yes', 'Yes'),
         ])
 

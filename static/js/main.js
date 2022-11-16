@@ -273,4 +273,22 @@ const mainChart = new Chart(document.getElementById('main-chart'), {
     }
   }
 });
-//# sourceMappingURL=main.js.map
+
+
+window.onload = religionSelected()
+
+function religionSelected(){
+    "use strict";
+    var religion = document.getElementById('loe')
+    document.getElementById("loe").style.display = 'none';
+    // if(religion.length != 0 ){
+    //      document.getElementById("loe").style.display = 'block';
+    // }else{
+    //     document.getElementById("loe").style.display = 'none';
+    // }
+    // console.log("Edwin Rimui")
+};
+
+
+
+

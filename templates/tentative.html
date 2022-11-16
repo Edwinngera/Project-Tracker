@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="projects">
-    <h2>Tentative Porjects</h2>
+    <h2>Tentative Projects</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -12,21 +11,15 @@
             </tr>
         </thead>
         <tbody>
+
+            {% for i  in results %}
             <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <td style="max-width: 100px;">{{i.project_name}}</td>
+                <td>{{i.client}}</td>
+                <td>{{i.project_start_date}}</td>
             </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
+            {% endfor %}
+         
         </tbody>
     </table>
 </div>

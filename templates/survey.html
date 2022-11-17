@@ -43,7 +43,7 @@
         </b>
     </div>
     <hr class="hr" />
-    <form>
+    <form action="/submit-survey" method="POST">
         {{ form.hidden_tag() }}
         <div class="row mb-4">
             <div class="col">
@@ -342,6 +342,149 @@
                     </fieldset>
                 </div>
 
+                <div class="form-outline">
+                    <fieldset class="form-field">
+                        <b>{{ form.loe_provided.label(style="float:left") }}</b>
+                        {{ form.loe_provided(class_ = 'form-control',style='font-size=5px') }}
+                        {% if form.loe_provided.errors %}
+                        <ul class="errors">
+                            {% for error in form.loe_provided.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </fieldset>
+                </div>
+
+                <hr class="hr" />
+
+
+                <div id="loe" style="display:none;">
+                    <p><b> Budget LOE
+                            [Approved by AP for '<'300K or Partner for>300K </b></p>
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.partner.label(style="float:left") }}</b>
+                            {{ form.partner(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.partner.errors %}
+                            <ul class="errors">
+                                {% for error in form.partner.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.associate_partner.label(style="float:left") }}</b>
+                            {{ form.associate_partner(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.associate_partner.errors %}
+                            <ul class="errors">
+                                {% for error in form.associate_partner.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.principal.label(style="float:left") }}</b>
+                            {{ form.principal(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.principal.errors %}
+                            <ul class="errors">
+                                {% for error in form.principal.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.principal.label(style="float:left") }}</b>
+                            {{ form.principal(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.principal.errors %}
+                            <ul class="errors">
+                                {% for error in form.principal.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.spl.label(style="float:left") }}</b>
+                            {{ form.spl(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.spl.errors %}
+                            <ul class="errors">
+                                {% for error in form.spl.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.pl.label(style="float:left") }}</b>
+                            {{ form.pl(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.pl.errors %}
+                            <ul class="errors">
+                                {% for error in form.pl.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.associate.label(style="float:left") }}</b>
+                            {{ form.associate(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.associate.errors %}
+                            <ul class="errors">
+                                {% for error in form.associate.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-outline">
+                        <fieldset class="form-field">
+                            <b>{{ form.analyst.label(style="float:left") }}</b>
+                            {{ form.analyst(class_ = 'form-control',style='font-size=5px') }}
+                            {% if form.analyst.errors %}
+                            <ul class="errors">
+                                {% for error in form.analyst.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </div>
+                    <hr class="hr" />
+
+                </div>
+
+
 
 
 
@@ -496,152 +639,15 @@
                             </fieldset>
                         </div>
 
+
+
                     </div>
-
-
 
                     <div class="form-outline">
                         <fieldset class="form-field">
-                            <b>{{ form.loe_provided.label(style="float:left") }}</b>
-                            {{ form.loe_provided(class_ = 'form-control',style='font-size=5px') }}
-                            {% if form.loe_provided.errors %}
-                            <ul class="errors">
-                                {% for error in form.loe_provided.errors %}
-                                <li>{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
+                            <input type="submit" value="Submit" class="btn form-control btn-primary btn-lg btn-block">
                         </fieldset>
                     </div>
-
-                    <hr class="hr" />
-
-
-                    <div id="loe" style="display:none;">
-                        <p><b> Budget LOE
-                                [Approved by AP for '<'300K or Partner for>300K </b></p>
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.partner.label(style="float:left") }}</b>
-                                {{ form.partner(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.partner.errors %}
-                                <ul class="errors">
-                                    {% for error in form.partner.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.associate_partner.label(style="float:left") }}</b>
-                                {{ form.associate_partner(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.associate_partner.errors %}
-                                <ul class="errors">
-                                    {% for error in form.associate_partner.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.principal.label(style="float:left") }}</b>
-                                {{ form.principal(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.principal.errors %}
-                                <ul class="errors">
-                                    {% for error in form.principal.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.principal.label(style="float:left") }}</b>
-                                {{ form.principal(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.principal.errors %}
-                                <ul class="errors">
-                                    {% for error in form.principal.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.spl.label(style="float:left") }}</b>
-                                {{ form.spl(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.spl.errors %}
-                                <ul class="errors">
-                                    {% for error in form.spl.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.pl.label(style="float:left") }}</b>
-                                {{ form.pl(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.pl.errors %}
-                                <ul class="errors">
-                                    {% for error in form.pl.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.associate.label(style="float:left") }}</b>
-                                {{ form.associate(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.associate.errors %}
-                                <ul class="errors">
-                                    {% for error in form.associate.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-
-
-                        <div class="form-outline">
-                            <fieldset class="form-field">
-                                <b>{{ form.analyst.label(style="float:left") }}</b>
-                                {{ form.analyst(class_ = 'form-control',style='font-size=5px') }}
-                                {% if form.analyst.errors %}
-                                <ul class="errors">
-                                    {% for error in form.analyst.errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %}
-                            </fieldset>
-                        </div>
-                        <hr class="hr" />
-
-                    </div>
-
 
                 </div>
 
@@ -654,10 +660,10 @@
             var loe_select = document.getElementById("loe_provided");
             var select = document.getElementById("loe");
             var business_unit = document.getElementById("business_unit")
-            var practicu=document.getElementById("practicum")
+            var practicu = document.getElementById("practicum")
 
             select.style.display = "block"
-        
+
             loe_select.onchange = function () {
 
                 state = loe_select.value;
@@ -671,16 +677,14 @@
                 }
             }
 
-            business.onchange=function()
-            {
-                
-                state=business_unit.value;
+            business.onchange = function () {
+
+                state = business_unit.value;
                 alert(state)
-                if(state=="O")
-                {
+                if (state == "O") {
                     practicu.style.display = "none";
                 }
-                else if (state=="A" || state=="AP") {
+                else if (state == "A" || state == "AP") {
                     practicu.style.display = "block";
                 }
             }

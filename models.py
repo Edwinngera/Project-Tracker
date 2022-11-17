@@ -65,6 +65,16 @@ class Test(db.Model):
     Stage=db.Column(db.String,nullable=False)
 
 
+class Client(db.Model):
+    __tablename__="Client"
+    id=db.Column(db.Integer,primary_key=True)
+    client_code=db.Column(db.Integer,nullable=False)
+    client_name=db.Column(db.String, nullable=False)
+
+    
+
+
+
 
 
 

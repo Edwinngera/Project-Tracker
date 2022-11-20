@@ -4261,7 +4261,14 @@ html:not([dir=rtl]) .nav {
   font-weight: var(--cui-nav-link-font-weight);
   color: var(--cui-nav-link-color);
   text-decoration: none;
+  
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.nav-link a:hover{
+
+  color:var(--cui-orange)
+
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
@@ -14256,3 +14263,9 @@ table.table td i {
   margin-top: 10px;
   font-size: 13px;
 } 
+
+
+#link:hover
+{
+  color: orange;
+}

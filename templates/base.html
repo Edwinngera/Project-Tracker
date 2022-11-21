@@ -31,12 +31,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/static/assets/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="manifest" href="/static/assets/favicon/manifest.json">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/maps/jquery.vmap.world.js"></script>
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/static/assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -77,27 +79,28 @@
       </svg> -->
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-            <li class="nav-item"><a class="nav-link" href="{{url_for('home')}}">
+
+            <li class="nav-item"><a class="nav-link" id="link" href="{{url_for('home')}}">
                     <svg class="nav-icon">
                         <use xlink:href="/static/vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                     </svg> Dashboard</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('tentative')}}">
+            <li class="nav-item"><a class="nav-link" id="link" href="{{url_for('tentative')}}">
                     <svg class="nav-icon">
                         <use xlink:href="/static/vendors/@coreui/icons/svg/free.svg#cil-briefcase"></use>
                     </svg>Tentative Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('stats')}}">
+            <li class="nav-item"><a class="nav-link" id="link" href="{{url_for('stats')}}">
                     <svg class="nav-icon">
                         <use xlink:href="/static/vendors/@coreui/icons/svg/free.svg#cil-chart-pie"></use>
                     </svg> Stats</a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="{{url_for('survey')}}">
+            <li class="nav-item"><a class="nav-link" id="link" href="{{url_for('survey')}}">
                     <svg class="nav-icon">
                         <use xlink:href="/static/vendors/@coreui/icons/svg/free.svg#cil-pen-alt"></use>
                     </svg> Projects Survey</a>
             </li>
 
-            <li class="nav-item"><a class="nav-link" href="{{url_for('snapshot')}}">
+            <li class="nav-item"><a class="nav-link" id="link" href="{{url_for('snapshot')}}">
                     <svg class="nav-icon">
                         <use xlink:href="/static/vendors/@coreui/icons/svg/free.svg#cil-camera-control"></use>
                     </svg> P4 Snapshot </a>
@@ -209,9 +212,14 @@
     <script src="/static/vendors/chart.js/js/chart.min.js"></script>
     <script src="/static/vendors/@coreui/chartjs/js/coreui-chartjs.js"></script>
     <script src="/static/vendors/@coreui/utils/js/coreui-utils.js"></script>
-    <script src="/static/js/main.js"></script>
-    <script>
-    </script>
+    <!-- <script src="/static/js/main.js"></script> -->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+    {% block imports%}
+
+
+    {% endblock %}
+    
 
 </body>
 

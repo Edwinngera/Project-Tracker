@@ -216,22 +216,6 @@
                     </fieldset>
                 </div>
 
-
-                <div class="form-outline">
-                    <fieldset class="form-field">
-                        <b>{{ form.rural.label }}</b>
-                        {{ form.rural(class_ = 'form-control',style='font-size=5px') }}
-                        {% if form.rural.errors %}
-                        <ul class="errors">
-                            {% for error in form.rural.errors %}
-                            <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </fieldset>
-                </div>
-
-
                 <div class="form-outline">
                     <fieldset class="form-field">
                         <b>{{ form.rural.label }}</b>
@@ -297,7 +281,7 @@
 
                 </div>
 
-                <p><b>Summary</b></p>
+                <h4><b>Summary</b></h4>
                 <div class="form-outline">
                     <fieldset class="form-field">
                         <b>{{ form.project_summary.label }}</b>
@@ -312,7 +296,7 @@
                     </fieldset>
                 </div>
 
-                <p>Key Client Contact</p>
+                <h4>Key Client Contact</h4>
                 <div class="form-outline">
                     <fieldset class="form-field">
                         <b>{{ form.full_name.label }}</b>
@@ -326,6 +310,8 @@
                         {% endif %}
                     </fieldset>
                 </div>
+
+                
 
 
                 <div class="form-outline">
@@ -341,6 +327,8 @@
                         {% endif %}
                     </fieldset>
                 </div>
+
+                <hr class="hr">
 
                 <div class="form-outline">
                     <fieldset class="form-field">

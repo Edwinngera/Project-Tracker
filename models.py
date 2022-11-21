@@ -61,8 +61,12 @@ class Salesforce(db.Model):
 class Client(db.Model):
     __tablename__="Client"
     id=db.Column(db.Integer,primary_key=True)
-    client_code=db.Column(db.Integer,nullable=False)
-    client_name=db.Column(db.String, nullable=False)
+    client_code=db.Column(db.Integer,nullable=True)
+    client_name=db.Column(db.String, nullable=True)
+    
+    def __repr__(self):
+        
+        return f"<Client>"
 
 
 class Dummy_Projects(db.Model):
@@ -78,7 +82,7 @@ class Dummy_Projects(db.Model):
     signing_entity=db.Column(db.String, nullable=True)
     business_entity=db.Column(db.String, nullable=True)
     engagement_number=db.Column(db.String, nullable=True)
-    country_one=db.Column(db.String, nullable=True)
+    country_one=db.Column(db.String, nullable=False)
     country_two=db.Column(db.String,nullable=True)
     city=db.Column(db.String, nullable=True)
     capability=db.Column(db.String, nullable=True)

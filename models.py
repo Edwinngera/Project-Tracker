@@ -2,8 +2,8 @@ from email.policy import default
 import imp
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-
-
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash,check_password_hash
 
 db=SQLAlchemy()
 
@@ -92,6 +92,37 @@ class Dummy_Projects(db.Model):
     def __repr__(self):
         return f"<Projects id={self.id} project_id={self.project_id} project_name={self.project_name} curr_end_date={self.curr_end_date} >\n"
 
+
+class User(UserMixin, db.Model):
+    __tablename__='users'
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+    name=db.Column(db.String(100), nullable=False,primary_key=True)
+    email=db.Column(db.String(),nullable=False)
+    unique=False
+    
+    password=db.Column(db.String(200),nullable=False,unique=False)
+    
+    created_on=db.Column(db.DateTime,index=False,unique=False,nullable=True)
+    
+    last_login=db.Column(db.DateTime,index=False,unique=False)
+    
+    
+    def set_password(self,password):
+        self.password=generate_password_hash(password,method="sha256")
+        
+    def check_password(self,password):
+        return check_password_hash(self.password,password)
+    
+    def __repr__(self):
+        return  '<User {}>'.format(self.username)
+        
+
+    
+    
+    
     
 
 

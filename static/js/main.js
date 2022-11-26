@@ -35,8 +35,8 @@ function render_main_graph(projects) {
         label: '# of Engagements',
         data: projects,
         borderWidth: 1,
-        borderColor: '#36A2EB',
-        backgroundColor: '#9BD0F5',
+        borderColor: '#5EAFD3',
+        backgroundColor: '#5EAFD3',
 
       }]
     },

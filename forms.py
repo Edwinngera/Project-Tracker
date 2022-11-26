@@ -324,3 +324,27 @@ class ConfirmationForm(FlaskForm):
         "Last Name", validators=[DataRequired(), Length(min=2, max=55)]
     )
     submit = SubmitField("Register Now")
+
+class SignupForm(FlaskForm):
+    name=StringField('Name', validators=[DataRequired()])
+    email=StringField('Email',validators=[Length(min=6),Email(message="Email a valid email"), DataRequired()])
+    password=PasswordField('Password',validators=[DataRequired(),Length(min=6,message="Select a stronger password")])
+    confirm=PasswordField(DataRequired(),EqualTo('password'),message='Passwords must match')
+    submit=SubmitField('Register')
+    
+
+class LoginForm(FlaskForm):
+    email=StringField('Email',validators=[DataRequired(),Email(message="Enter a valid email")])
+    password=PasswordField('Password', validators=[DataRequired()])
+    submit=SubmitField('Log In')
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    

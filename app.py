@@ -1,21 +1,57 @@
-from flask import Flask, render_template, redirect, request
-from forms import ConfirmationForm, Tentative_Projects, Salesforce
+from flask import Flask, render_template, redirect, request, flash,url_for
+from werkzeug.security import generate_password_hash,check_password_hash
+from forms import (
+    ConfirmationForm,
+    Tentative_Projects,
+    Salesforce,
+    LoginForm,
+    SignupForm,
+)
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
 import json
 from data import DashboardData
+from flask_login import (
+    login_required,
+    logout_user,
+    current_user,
+    login_user,
+    LoginManager,
+)
 
 
+login_manager = LoginManager()
 app = Flask(__name__)
 app.config.from_object(Config)
-from models import db, Projects, Dummy_Projects, Salesforce
+from models import db, Projects, Dummy_Projects, Salesforce, User
 
-db.init_app(app)  # Add this line Before migrate line
+db.init_app(app)
+login_manager.init_app(app)
+
+# from auth import LoginHander
+
 migrate = Migrate(app, db)
 
+# with app.app_context():
+#     import auth
+
+@login_manager.user_loader
+def load_user(user_id):
+    """Check if user is logged-in on every page load."""
+    if user_id is not None:
+        return User.query.get(user_id)
+    return None
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    """Redirect unauthorized users to Login page."""
+    flash("You must be logged in to view that page.")
+    return redirect("/login")
 
 @app.route("/")
+@login_required
 def home():
     engagements = Projects.query.all()
     # Kenya
@@ -300,9 +336,9 @@ def home():
         times.append(occurrences)
     z = dict(zip(codes, times))
 
-    sector,percentages=DashboardData.get_sectors(db)
-    
-    projects_per_year=DashboardData.get_yearly_engagement_count(db)
+    sector, percentages = DashboardData.get_sectors(db)
+
+    projects_per_year = DashboardData.get_yearly_engagement_count(db)
     print("Edwin")
     print(projects_per_year)
     print(percentages)
@@ -318,25 +354,53 @@ def home():
         user=user,
         sectors=sector,
         percentages=percentages,
-        projects=projects_per_year
+        projects=projects_per_year,
     )
-    
-    
 
-
+@login_required
 @app.route("/charts")
 def charts():
     return render_template("charts.html", title="Charts")
 
 
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template("login.html", title="")
+      if current_user.is_authenticated:
+        return redirect('/')
+      else:
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.query.filter_by(email=form.email.data).first()
+            if user and user.check_password(password=form.password.data):
+                login_user(user)
+                next_page = request.args.get('next')
+                return redirect(next_page or url_for('home'))
+
+            flash('Invalid username/password combination')      
+        return render_template("login.html", title="", form=form)
 
 
-@app.route("/register")
+@app.route("/register",methods=["POST", "GET"] )
 def register():
-    return render_template("register.html")
+    form = SignupForm(request.form)
+    if request.method == 'POST' and form.validate():
+        print("Ngera")
+        existing_user = User.query.filter_by(email=form.email.data).first()
+        print(existing_user)
+        if existing_user is None:
+                user = User(
+                    name=form.name.data,
+                    email=form.email.data,
+                )
+                user.set_password(form.password.data)
+                db.session.add(user)
+                db.session.commit()  # Create new user
+                login_user(user)  # Log in as newly created user
+                return redirect(url_for('home'))
+        # flash('A user already exists with that email address.')
+    else:
+        print("Invalid")
+        return render_template("register.html", form=form)
 
 
 @app.route("/survey")
@@ -395,5 +459,10 @@ def stats():
 def test():
     return render_template("edwin.html")
 
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+    

@@ -94,19 +94,12 @@ class Dummy_Projects(db.Model):
 
 
 class User(UserMixin, db.Model):
-    __tablename__='users'
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
-    name=db.Column(db.String(100), nullable=False,primary_key=True)
+    __tablename__ = "flasklogin-users"
+    id = db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String(100), nullable=False)
     email=db.Column(db.String(),nullable=False)
-    unique=False
-    
     password=db.Column(db.String(200),nullable=False,unique=False)
-    
     created_on=db.Column(db.DateTime,index=False,unique=False,nullable=True)
-    
     last_login=db.Column(db.DateTime,index=False,unique=False)
     
     

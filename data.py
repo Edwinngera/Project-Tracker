@@ -1,6 +1,9 @@
 from models import *
 from flask import jsonify
 import json
+from  dotenv import load_dotenv
+import os
+import requests
 
 
 class DashboardData():
@@ -42,6 +45,26 @@ class DashboardData():
             yearly_projects.append(len(num_projects))
             
         return yearly_projects  
+    
+    def get_10k_data():
+        load_dotenv()
+        API_KEY=os.getenv("API_KEY")
+        API_URL=os.getenv("URL")
+        params = {
+            "method": "GET",
+            "contentType": 'application/json',
+            "headers": { "auth": API_KEY },
+        };
+        response=requests.get(API_URL, params=params)
+        return response
+
+        
+        
+        
+        
+        
+        
+        
         
         
         

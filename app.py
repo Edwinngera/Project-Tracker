@@ -462,11 +462,10 @@ def stats():
     return render_template("test.html", title="Stats")
 
 
-@app.route("/test")
-def test():
-    return render_template("edwin.html")
-
-
+@app.route("/admin")
+def admin():
+    return render_template("admin.html",title="Admin")
+    
 
 
 

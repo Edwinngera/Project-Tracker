@@ -50,17 +50,15 @@ class DashboardData():
         load_dotenv()
         API_KEY=os.getenv("API_KEY")
         API_URL=os.getenv("URL")
-        params = {
-            "method": "GET",
-            "contentType": 'application/json',
-            "headers": { "auth": API_KEY },
-        };
-        response=requests.get(API_URL, params=params)
+        headers = {
+        'Authorization': API_KEY
+        }
+        
+        print(headers)
+        response=requests.get(API_URL, headers=headers)
         return response
-
-        
-        
-        
+   
+print(DashboardData.get_10k_data())
         
         
         

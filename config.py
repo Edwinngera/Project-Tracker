@@ -15,3 +15,5 @@ class Config(object):
 
     # Enable debug mode.
     DEBUG = True
+    
+    

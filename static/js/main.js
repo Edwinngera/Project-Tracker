@@ -14,10 +14,21 @@ Chart.defaults.plugins.tooltip.position = 'nearest';
 Chart.defaults.plugins.tooltip.external = coreui.ChartJS.customTooltips;
 Chart.defaults.defaultFontColor = '#646470';
 
-const random = (min, max) => // eslint-disable-next-line no-mixed-operators
+var random = (min, max) => // eslint-disable-next-line no-mixed-operators
   Math.floor(Math.random() * (max - min + 1) + min); // eslint-disable-next-line no-unused-vars
 
 
+Chart.Tooltip.positioners.custom = function (elements, eventPosition) {
+  /** @type {Chart.Tooltip} */
+  var tooltip = this;
+
+  /* ... */
+
+  return {
+    x: eventPosition.x,
+    y: eventPosition.y
+  };
+}
 
 
 function render_main_graph(projects) {
@@ -35,22 +46,42 @@ function render_main_graph(projects) {
         label: '# of Engagements',
         data: projects,
         borderWidth: 1,
-        borderColor: '#5EAFD3',
-        backgroundColor: '#5EAFD3',
+        borderColor: '#276D8D',
+        backgroundColor: "#276D8D"
 
       }]
     },
     options: {
+
+      tooltips: {
+        position: 'custom',   //<-- important same name as your function above      
+        callbacks: {
+          label: function (tooltipItem, data) {
+            var label = Math.floor(tooltipItem.yLabel * 100) / 100 + " " + data.datasets[tooltipItem.datasetIndex].label;
+            return label;
+          }
+        }
+      },
+
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          grid: {
+            display: false
+          }
+        },
+
+        x:
+        {
+          grid: {
+            display: false
+          }
+
         }
+
       }
     }
   });
-
-
-
 
 }
 

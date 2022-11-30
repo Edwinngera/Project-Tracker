@@ -1,0 +1,9 @@
+<RuleCollection Type="Exe" EnforcementMode="Enabled">
+<FilePublisherRule Id="b863f177-cff3-4d05-94cc-8d2a9269a179" Name="AVIRA.EXE, version 1.0.0.0 and above, in AVIRA SECURITY, from O=AVIRA OPERATIONS GMBH, L=TETTNANG, S=BADEN-WÜRTTEMBERG, C=DE" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+<Conditions>
+<FilePublisherCondition PublisherName="O=AVIRA OPERATIONS GMBH, L=TETTNANG, S=BADEN-WÜRTTEMBERG, C=DE" ProductName="AVIRA SECURITY" BinaryName="AVIRA.EXE">
+<BinaryVersionRange LowSection="1.0.0.0" HighSection="*"/>
+</FilePublisherCondition>
+</Conditions>
+</FilePublisherRule>
+</RuleCollection>

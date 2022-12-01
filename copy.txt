@@ -1,0 +1,4 @@
+COPY "Client"
+FROM 'C:\clients.csv'
+DELIMITER ','
+CSV HEADER;
